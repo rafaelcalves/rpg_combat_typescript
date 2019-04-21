@@ -14,4 +14,4 @@ If you want to create a new project like this one. Run the following commands be
 
 `npm i --package-lock-only`
 
-It will setup your directory as an npm project. You can fill the formulary.
+It will setup your directory as an npm project. You can optionally fill the formulary given by the command just pressing _ENTER_.
