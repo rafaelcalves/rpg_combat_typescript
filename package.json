@@ -1,0 +1,29 @@
+{
+  "name": "rpg_combat_typescript",
+  "version": "1.0.0",
+  "description": "RPG Combat Kata ================ Source: [https://github.com/ardalis/kata-catalog](https://github.com/ardalis/kata-catalog)",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register test/*.ts",
+    "build": "tsc src/*.ts test/*.ts",
+    "build-tests": "tsc test/*.ts",
+    "build-src": "tsc src/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelcalves/rpg_combat_typescript.git"
+  },
+  "keywords": [
+    "rpg",
+    "kata",
+    "learning",
+    "object oriented",
+    "clean code"
+  ],
+  "author": "Rafael Corrêa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaelcalves/rpg_combat_typescript/issues"
+  },
+  "homepage": "https://github.com/rafaelcalves/rpg_combat_typescript#readme"
+}
