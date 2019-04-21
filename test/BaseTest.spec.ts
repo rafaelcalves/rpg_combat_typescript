@@ -1,7 +1,4 @@
-import chai = require('chai');
-
-var assert = chai.assert;
-var expect = chai.expect;
+import {assert, expect} from "./Basic"
 
 describe('BaseTest', function(){
 	it('should pass', function() {
