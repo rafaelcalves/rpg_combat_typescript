@@ -1,13 +1,19 @@
-ENVIRONMENT SETUP
-=================
+# ENVIRONMENT SETUP
+
+## MANDATORY
+
+### INSTALLING DEPENDENCIES
+
 Run in you local repository the following command:
 
 `npm install -g typescript systemjs chai mocha ts-node @types/chai @types/mocha --save-dev`
 
 It will install all the needed modules to run this project.
 
-NEW PORJECT?
-============
+## OPTIONAL
+
+### NEW PORJECT?
+
 If you want to create a new project like this one. Run the following commands before installing the node-modules:
 
 `tsc --init`
