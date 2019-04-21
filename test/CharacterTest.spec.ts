@@ -5,13 +5,35 @@ describe('Character', function(){
     describe('a new one', function(){
         let character = new char.Character;
         it('should have health equals to 1000', function() {
-            expect( character.getHealth ).to.be.equals(1000);
+            expect( character.health ).to.be.equals(1000);
         });
         it('should have level equals to 1', function() {
-            expect( character.getLevel ).to.be.equals(1);
+            expect( character.level ).to.be.equals(1);
         });
         it('should be alive', function() {
             expect( character.isAlive ).to.be.equals(true);
         });
+    });
+
+    describe('fighting', function(){
+        let character = new char.Character;
+        let target = new char.Character;
+        it('should be able to hit a target character', function(){
+            character.damage(target, 100);
+        });
+        it('the target should have lost health as the given damage', function(){
+            expect(target.health).to.be.equals(900);
+        })
+    });
+
+    describe('healing', function(){
+        let character = new char.Character;
+        let target = new char.Character;
+        it('should be able to heal a target character', function(){
+            character.heal(target, 10);
+        });
+        it('the target should have be healed as given', function(){
+            expect(target.health).to.be.equals(1010);
+        })
     });
 });
