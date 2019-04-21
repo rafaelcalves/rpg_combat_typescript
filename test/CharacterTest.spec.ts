@@ -25,8 +25,8 @@ describe('Character', function(){
             expect(target.health).to.be.equals(900);
         });
 
-        character.damage(1000, target);
         it('if damage is bigger than or equals to target\'s health, target should die', function(){
+            character.damage(1000, target);
             expect(target.isAlive()).to.be.equals(false);
         });
     });
@@ -41,9 +41,9 @@ describe('Character', function(){
             expect(target.health).to.be.equals(1000);
         });
         
-        character.damage(100,target);
-        character.heal(100, target);
         it('the target should have be healed as given', function(){
+            character.damage(100,target);
+            character.heal(100, target);
             expect(target.health).to.be.equals(1000);
         });
     });

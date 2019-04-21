@@ -1,11 +1,13 @@
 export class Character{
+    readonly FULL_HEALTH = 1000;
+
     protected _health:number;
     protected _level:number;
     protected _alive:boolean;
-    
+
     constructor(){
-        this._health=1000;
-        this._level=1;
+        this._health=this.FULL_HEALTH;
+        this._level= 1;
         this._alive=true;
     }
     
@@ -29,7 +31,6 @@ export class Character{
         if(this._health > 0){
             this._health = 0;
         }
-
         this._alive = false;
     }    
 
@@ -37,14 +38,25 @@ export class Character{
         this._alive = true;
     }
     
-    public heal(value:number):void;
-    public heal(value:number, target: Character):void;
+    public heal(healingPoints:number):void;
+    public heal(healingPoints:number, target: Character):void;
 
-    public heal(value:number, target?: Character):void{
+    public heal(healingPoints:number, target?: Character):void{
         if (target != null) {
-            target.heal(value);
+            target.heal(healingPoints);
         } else {
-            this._health = this._health + value;
+            this.beHealed(healingPoints);
+        }
+    }
+
+    protected beHealed(healingPoints:number){
+        if(this.isAlive){
+            let resultHealth = this._health + healingPoints;
+            if(resultHealth > this.FULL_HEALTH){
+                this._health = this.FULL_HEALTH;
+            } else{
+                this._health = resultHealth;
+            }
         }
     }
 
@@ -55,11 +67,11 @@ export class Character{
         if (target != null) {
             target.damage(hit);
         } else {
-            this.sufferDamage(hit)
+            this.beDamaged(hit)
         }
     }
 
-    protected sufferDamage(hit:number){
+    protected beDamaged(hit:number){
         if(this._health > hit){
             this._health = this._health - hit;
         } else {
