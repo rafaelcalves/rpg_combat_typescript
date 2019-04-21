@@ -10,6 +10,8 @@ NEW PORJECT?
 ============
 If you want to create a new project like this one. Run the following commands before installing the node-modules:
 
+`tsc --init`
+
 `npm init`
 
 `npm i --package-lock-only`
