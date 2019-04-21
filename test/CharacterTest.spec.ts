@@ -11,7 +11,7 @@ describe('Character', function(){
             expect( character.level ).to.be.equals(1);
         });
         it('should be alive', function() {
-            expect( character.isAlive ).to.be.equals(true);
+            expect( character.isAlive() ).to.be.equals(true);
         });
     });
 
@@ -19,21 +19,32 @@ describe('Character', function(){
         let character = new char.Character;
         let target = new char.Character;
         it('should be able to hit a target character', function(){
-            character.damage(target, 100);
+            character.damage(100, target);
         });
         it('the target should have lost health as the given damage', function(){
             expect(target.health).to.be.equals(900);
-        })
+        });
+
+        character.damage(1000, target);
+        it('if damage is bigger than or equals to target\'s health, target should die', function(){
+            expect(target.isAlive()).to.be.equals(false);
+        });
     });
 
     describe('healing', function(){
         let character = new char.Character;
         let target = new char.Character;
         it('should be able to heal a target character', function(){
-            character.heal(target, 10);
+            character.heal(100, target);
         });
+        it('target should not be healed more than full health', function(){
+            expect(target.health).to.be.equals(1000);
+        });
+        
+        character.damage(100,target);
+        character.heal(100, target);
         it('the target should have be healed as given', function(){
-            expect(target.health).to.be.equals(1010);
-        })
+            expect(target.health).to.be.equals(1000);
+        });
     });
 });
