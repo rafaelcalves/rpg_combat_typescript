@@ -4,9 +4,9 @@
   "description": "RPG Combat Kata ================ Source: [https://github.com/ardalis/kata-catalog](https://github.com/ardalis/kata-catalog)",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register test/*.ts",
+    "test": "mocha -r ts-node/register test/*.spec.ts",
     "build": "tsc src/*.ts test/*.ts",
-    "build-tests": "tsc test/*.ts",
+    "build-tests": "tsc test/*.spec.ts",
     "build-src": "tsc src/*.ts"
   },
   "repository": {
