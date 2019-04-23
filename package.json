@@ -22,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/rafaelcalves/rpg_combat_typescript/issues"
   },
-  "homepage": "https://github.com/rafaelcalves/rpg_combat_typescript#readme"
+  "homepage": "https://github.com/rafaelcalves/rpg_combat_typescript#readme",
+  "dependencies": {
+    "mocha": "^6.1.4",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.4"
+  }
 }
