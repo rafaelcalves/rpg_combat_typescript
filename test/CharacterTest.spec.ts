@@ -34,17 +34,20 @@ describe('Character', function(){
     describe('healing', function(){
         let character = new char.Character;
         let target = new char.Character;
-        it('should be able to heal a target character', function(){
+        it('should be able to heal a target character', function() {
             character.heal(100, target);
         });
-        it('target should not be healed more than full health', function(){
+        it('target should not be healed more than full health', function() {
             expect(target.health).to.be.equals(1000);
         });
-        
-        it('the target should have be healed as given', function(){
-            character.damage(100,target);
+        it('should not be able to heal a dead character', function() {
+            target.kill();
+            expect(() => character.heal(100, target)).to.throw(Error, "Cannot heal a dead character");
+        });
+        it('the target should have be healed as given', function() {
+            target.reborn();
             character.heal(100, target);
-            expect(target.health).to.be.equals(1000);
+            expect(target.health).to.be.equals(100);
         });
     });
 });

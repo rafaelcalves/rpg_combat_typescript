@@ -50,13 +50,15 @@ export class Character{
     }
 
     protected beHealed(healingPoints:number){
-        if(this.isAlive){
+        if(this.isAlive()){
             let resultHealth = this._health + healingPoints;
             if(resultHealth > this.FULL_HEALTH){
                 this._health = this.FULL_HEALTH;
             } else{
                 this._health = resultHealth;
             }
+        } else {
+            throw new Error("Cannot heal a dead character");
         }
     }
 
