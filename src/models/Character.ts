@@ -1,25 +1,22 @@
-import { CharacterFactory } from "../factories/CharacterFactory"
-import { HealingError } from "../errors/HealingError"
-import { DamageHandler } from "../handlers/DamageHandler"
-import { Damage } from "./Damage";
+import { HealingError } from "../errors/HealingError";
+import { AttackHandler } from "../handlers/AttackHandler";
+import { Combat } from "./Combat";
+import { RangedCombat } from "./RangedCombat";
 
 export class Character {
+    static readonly FULL_HEALTH = 1000;
+    static readonly START_LEVEL = 1;
 
-    protected _health:number;
-    protected _level:number;
-    protected _alive:boolean;
-
-    constructor(health: number, level: number, alive: boolean){
-        this._health=health
-        this._level=level;
-        this._alive=alive;
-    }
+    protected _health:number = 1000;
+    protected _level:number = 1;
+    protected _alive:boolean = true;
+    protected _maxRange:number = 0;
 
     public heal(hit:number): void{
         if(this.isAlive()){
             let resultHealth = this.health + hit;
-            if(resultHealth > CharacterFactory.FULL_HEALTH){
-                this._health = CharacterFactory.FULL_HEALTH;
+            if(resultHealth > Character.FULL_HEALTH){
+                this._health = Character.FULL_HEALTH;
             } else{
                 this._health = resultHealth;
             }
@@ -28,9 +25,14 @@ export class Character {
         }
     }
 
-    public damage(target:Character, hit:number ):void{
-        let damage: Damage = new Damage(this, target, hit);
-        DamageHandler.handle(damage)
+    public attack(target:Character, hit:number):void{
+        let attack: Combat = new Combat(this, target, hit);
+        AttackHandler.handle(attack)
+    }
+
+    public rangedAttack(target:Character, hit:number, range:number){
+        let attack: RangedCombat = new RangedCombat(this, target, hit, range);
+        AttackHandler.handle(attack)
     }
 
     public beDamaged(hit:number): void {
@@ -56,6 +58,14 @@ export class Character {
         this.alive = true;
     }
 
+    public levelUp(levels:number):void;
+    public levelUp(levels?:number):void {
+        if(levels!=null){
+            this._level = this.level + levels;
+        }
+        
+    }
+
     public get health() : number {
         return this._health;
     }
@@ -67,4 +77,9 @@ export class Character {
     protected set alive(alive : boolean) {
         this._alive = alive;
     }
+
+    public get maxRange() : number {
+        return this._maxRange;
+    }
+    
 }

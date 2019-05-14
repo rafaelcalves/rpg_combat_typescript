@@ -1,6 +1,6 @@
 import { Character } from "./Character";
 
-export class Damage{
+export class Combat{
     protected _attacker: Character;
     protected _target: Character;
     protected _hit: number;
