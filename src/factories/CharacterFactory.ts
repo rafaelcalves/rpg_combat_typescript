@@ -1,24 +1,29 @@
-import {Character} from "../models/Character"
-import {MeleeFigther} from '../models/MeleeFighter';
-import {RangedFigther} from '../models/RangedFigther';
+import {Player} from "../models/Player"
+import {MeleeFighter} from '../models/MeleeFighter';
+import {RangedFighter} from '../models/RangedFighter';
+import { Character } from "../models/Character";
 
-export class CharacterFactory {
+export namespace CharacterFactory {
 
-    public static create() : Character{
-        return new Character();
+    export function create() : Player{
+        return new Player();
     }
 
-    public static createSetLevel(level: number) : Character{
-        let char: Character = new Character();
+    export function createSetLevel(level: number) : Player{
+        let char: Player = new Player();
         char.levelUp(level)
         return char;
     }
 
-    public static createMelee(){
-        return new MeleeFigther();
+    export function createMelee(){
+        return new MeleeFighter();
     }
 
-    public static createRanged(){
-        return new RangedFigther();
+    export function createRanged(){
+        return new RangedFighter();
+    }
+
+    export function createThing(health:number){
+        return new Character(health);
     }
 }
