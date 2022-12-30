@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/rafaelcalves/rpg_combat_typescript#readme",
   "dependencies": {
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.4"
   }
